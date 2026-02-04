@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "aws-kb-retrieval": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@aws/amazon-q-developer-cli-mcp-server"
+      ]
+    },
+    "aws-frontend": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@aws/mcp-server-aws-frontend"
+      ]
+    },
+    "aws-cdk": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@aws/mcp-server-aws-cdk"
+      ]
+    },
+    "fetch": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-fetch"
+      ]
+    }
+  }
+}

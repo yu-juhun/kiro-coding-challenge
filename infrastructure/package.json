@@ -1,0 +1,23 @@
+{
+  "name": "infrastructure",
+  "version": "0.1.0",
+  "bin": {
+    "infrastructure": "bin/app.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "aws-cdk": "2.x",
+    "ts-node": "^10.x",
+    "typescript": "~5.x"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.x",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21"
+  }
+}
