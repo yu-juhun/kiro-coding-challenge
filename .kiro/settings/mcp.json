@@ -1,13 +1,13 @@
 {
   "mcpServers": {
-    "aws-kb-retrieval": {
+    "knowledge-mcp.global.api.aws": {
       "command": "npx",
       "args": [
         "-y",
         "@aws/amazon-q-developer-cli-mcp-server"
       ]
     },
-    "aws-frontend": {
+    "awslabs.frontend-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
