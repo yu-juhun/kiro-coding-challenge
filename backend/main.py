@@ -1,10 +1,9 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response, Query
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
-from typing import Optional
+from pydantic import BaseModel
+from typing import Optional, List
 import boto3
 import os
-from datetime import datetime
 import uuid
 
 app = FastAPI()
@@ -39,7 +38,7 @@ def read_root():
 def health_check():
     return {"status": "healthy"}
 
-@app.post("/events")
+@app.post("/events", status_code=201)
 def create_event(event: Event):
     try:
         event_id = str(uuid.uuid4())
@@ -59,10 +58,15 @@ def create_event(event: Event):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/events")
-def list_events():
+def list_events(status: Optional[str] = Query(None)):
     try:
         response = table.scan()
-        return response.get('Items', [])
+        items = response.get('Items', [])
+        
+        if status:
+            items = [item for item in items if item.get('status') == status]
+        
+        return items
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
