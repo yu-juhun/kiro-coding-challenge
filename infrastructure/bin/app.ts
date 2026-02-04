@@ -4,6 +4,4 @@ import * as cdk from 'aws-cdk-lib';
 import { EventManagementStack } from '../lib/event-management-stack';
 
 const app = new cdk.App();
-new EventManagementStack(app, 'EventManagementStack', {
-  env: { region: 'us-west-2' },
-});
+new EventManagementStack(app, 'EventManagementStack');
