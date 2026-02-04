@@ -20,15 +20,7 @@ export class EventManagementStack extends cdk.Stack {
     const apiFunction = new lambda.Function(this, 'EventApiFunction', {
       runtime: lambda.Runtime.PYTHON_3_11,
       handler: 'lambda_handler.handler',
-      code: lambda.Code.fromAsset(path.join(__dirname, '../../backend'), {
-        bundling: {
-          image: lambda.Runtime.PYTHON_3_11.bundlingImage,
-          command: [
-            'bash', '-c',
-            'pip install -r requirements.txt -t /asset-output && cp -au . /asset-output'
-          ],
-        },
-      }),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../../backend')),
       environment: {
         TABLE_NAME: table.tableName,
       },
